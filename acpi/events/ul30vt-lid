@@ -1,0 +1,2 @@
+event=button/lid
+action=/etc/acpi/actions/ul30vt-lid.sh "%e"

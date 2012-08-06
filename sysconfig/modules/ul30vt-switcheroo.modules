@@ -1,0 +1,19 @@
+#!/bin/sh
+
+for dev in "0000:01:00.0" "0000:01:00.1"; do
+    vendor=$(cat /sys/bus/pci/devices/$dev/vendor | colrm 1 2)
+    device=$(cat /sys/bus/pci/devices/$dev/device | colrm 1 2)
+    echo $vendor $device > /sys/bus/pci/drivers/pci-stub/new_id
+    if [ -e /sys/bus/pci/devices/$dev/driver ]; then
+        echo $dev > /sys/bus/pci/devices/$dev/driver/unbind
+    fi
+    echo $dev > /sys/bus/pci/drivers/pci-stub/bind
+done
+
+/sbin/modprobe byo-switcheroo
+
+sleep 0.2
+
+if [ -e /sys/kernel/debug/vgaswitcheroo/switch ]; then
+	echo OFF > /sys/kernel/debug/vgaswitcheroo/switch
+fi

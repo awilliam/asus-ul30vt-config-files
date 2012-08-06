@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# ok, so no modules...
+/sbin/setpci -s 2.0 F4.B > /tmp/.ul30vt.brightness
