@@ -1,0 +1,5 @@
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="Fedora"
+GRUB_DEFAULT=saved
+GRUB_CMDLINE_LINUX="rd.md=0 rd.lvm=0 rd.dm=0 SYSFONT=True  KEYTABLE=us rd.luks=0 LANG=en_US.UTF-8 cgroup_disable=memory intel_iommu=on selinux=0 rhgb quiet"
+#GRUB_THEME="/boot/grub2/themes/system/theme.txt"
